@@ -1,5 +1,7 @@
 #include "stdio.h"
 #include "Vernam_crypt.h"
+#include <locale.h>
+setlocale(LC_ALL, "Rus");
 
 char randsymbgen (int gen_type) 
 {
