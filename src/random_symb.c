@@ -1,9 +1,9 @@
 #include "stdio.h"
-#include "Vernam_crypt.h"
-#include <locale.h>
+#include "vernam_crypt.h"
+#include "locale.h"
 setlocale(LC_ALL, "Rus");
 
-char randsymbgen (int gen_type) 
+char rand_symb_gen (int gen_type) 
 {
 	int a,b;
 	char symb;
