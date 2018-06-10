@@ -9,7 +9,7 @@ char viginer_in(char string, char f, short lang)
 
     if ((string >= 'a' && string <= 'z') || (string >= 'A' && string <= 'Z') ||
         (string >= 'а' && string <= 'я') || (string >= 'А' && string <= 'Я')) {
-        new_ssq = *string + f;
+        new_ssq = string + f;
         
         //исключение возможности выхода за пределы используемого алфавита
         
