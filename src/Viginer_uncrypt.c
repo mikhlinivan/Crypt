@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include <Viginer.h>
+#include "Viginer.h"
 
 char viginer_out(char string, char f, short lang)
 {
@@ -13,8 +13,8 @@ char viginer_out(char string, char f, short lang)
         
         //исключение возможности выхода за пределы используемого алфавита
         
-        if ((string >= 'Z' && string <= 'a') || (string >= 'z' && string <= 'А') ||
-                (string >= 'я') {
+        if ((new_ssq > 'Z' && new_ssq < 'a') || (new_ssq > 'z' && new_ssq < 'А') ||
+                (new_ssq < 'A') {
             if(lang == 1) {
                 new_ssq = new_ssq + 26;
             } else {
