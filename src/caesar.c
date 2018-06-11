@@ -2,7 +2,7 @@
 #include <locale.h>
 
 #define ENG 26
-#define RUS 32
+#define RUS 31
 
 void encrypt (int n)
 {
