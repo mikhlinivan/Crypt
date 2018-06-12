@@ -7,72 +7,77 @@ int main()
 {
 	int type, gen_type, step_for_caesar, act_type, i;
 	char current_symbol, crypted_symbol;
-	crypt_type_point:
-	printf("выберите что будете делать с текстом \n");
-	printf("1.шифровать \n 2.дешифровать");
+	act_pick:
+	printf("выберите что будете делать с текстом из предложенных ниже вариантов \n");
+	printf("1.шифровать \n 2.дешифровать \n");
 	scanf("%d", &act_type);
 	if(act_type == 1) {
-		printf("выберите тип шифрования из приведенных ниже\n");
+		crypt_type_point:
+		printf("\n выберите тип шифрования из приведенных ниже\n");
 		printf("1. vernam \n 2. vigenere \n 3. caesar\n");
 		scanf("%d", &type);
-		if(type > 0 && type < 4) {
-			if(type == 1 || type == 2) {
+		switch (type) {
+			case 1:
 				gen_type_point:
-				printf("выберите тип генерации случайных символов для ключа из приведенных ниже");
+				printf("\n выберите тип генерации случайных символов для ключа из приведенных ниже \n");
 				printf("1. только английские символы \n 2. только русские символы \n 3. английские и русские символы \n");
 				scanf("%d", &gen_type);
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
-						if(type == 1) {
-							
-							
-						}
-						else {
-							
-							
-						}
+						crypted_symbol = vernam(&current_symbol, gen_type);
 						
 					}
 				}
 				else {
 					goto gen_type_point;
 				}
-			}
-			else {
+				break;
+			case 2:
 				while (current_symbol != EOF) {
-					
-					
+				crypted_symbol = viginer_in(current_symbol, crypt_key, language);
+				
+			
 				}
-			}
-		}
-		else {
-			goto crypt_type_point;
+				break;
+			case 3:
+				while (current_symbol != EOF) {
+					crypted_symbol = 
+				
+				}
+				break;
+			case default:
+				goto crypt_type_point:
 		}
 	}
 	else if(act_type == 2) {
 		decrypt_type:
-		printf("выбереите изначальный тип шифрования\n");
+		printf("\n выбереите изначальный тип шифрования\n");
 		printf("1. vernam \n 2. vigenere \n 3. caesar\n");
 		scanf("%d", &type);
-		if(type > 0 && type < 4) {
-			while(current_symbol != EOF) {
-				switch (type) {
-					case 1:
-						
-						break;
-					case 2:
-						
-						break;
-					case 3:
-						
-						break;
+		switch (type) {
+			case 1:
+				while(current_symbol != EOF) {
+					
+					
 				}
-				
-			}
-		}
-		else {
-			goto decrypt_type;
+				break;
+			case 2:
+				while(current_symbol != EOF) {
+					
+					
+				}
+				break;
+			case 3:
+				while(current_symbol != EOF) {
+					
+					
+				}
+				break;
+			case default:
+				goto decrypt_type
 		}
 	}
+	else {
+		goto act_pick;
 	return 0;
 }
