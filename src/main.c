@@ -1,12 +1,16 @@
 #include "stdio.h"
 #include "vernam_crypt.h"
+#include "Viginer.h"
 #include "locale.h"
 setlocale(LC_ALL, "Rus");
 
 int main()
 {
+	FILE *out_text, *decipher_text;
+	out_text = fopen("crypted.txt", "w");
+	decipher_text = fopen("decrypt.txt", "w");
 	int type, gen_type, step_for_caesar, act_type, i;
-	char current_symbol, crypted_symbol;
+	char current_symbol, crypted_symbol, key;
 	act_pick:
 	printf("выберите что будете делать с текстом из предложенных ниже вариантов \n");
 	printf("1.шифровать \n 2.дешифровать \n");
@@ -25,7 +29,8 @@ int main()
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
 						crypted_symbol = vernam(&current_symbol, gen_type);
-						
+						fprintf(out_text, "%c", crypted_symbol);//запись в файл
+						//смещение символа по изначальному файлу
 					}
 				}
 				else {
@@ -34,23 +39,24 @@ int main()
 				break;
 			case 2:
 				while (current_symbol != EOF) {
-				crypted_symbol = viginer_in(current_symbol, crypt_key, language);
-				
-			
+					crypted_symbol = viginer_in(current_symbol, crypt_key, language);
+					fprintf(out_text, "%c", crypted_symbol);
+					//смещение символа по изначальному файлу
 				}
 				break;
 			case 3:
 				while (current_symbol != EOF) {
-					crypted_symbol = 
-				
+					crypted_symbol = //то на что кирилл заменит encrypt
+					fprintf(out_text, "%c", crypted_symbol);
+					//смещение символа по изначальному файлу
 				}
 				break;
 			case default:
-				goto crypt_type_point:
+				goto crypt_type_point;
 		}
 	}
 	else if(act_type == 2) {
-		decrypt_type:
+		decrypt_type_point:
 		printf("\n выбереите изначальный тип шифрования\n");
 		printf("1. vernam \n 2. vigenere \n 3. caesar\n");
 		scanf("%d", &type);
@@ -58,26 +64,31 @@ int main()
 			case 1:
 				while(current_symbol != EOF) {
 					
-					
+					current_symbol = vernam_decrypt(&current_symbol, key);
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
+					//смещение символа по файлу
 				}
 				break;
 			case 2:
 				while(current_symbol != EOF) {
-					
-					
+					current_symbol = viginer_out();
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
+					//смещение символа по файлу
 				}
 				break;
 			case 3:
 				while(current_symbol != EOF) {
-					
-					
+					current_symbol = //то на что кирилл заменит decipher
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
+					//смещение символа по файлу
 				}
 				break;
 			case default:
-				goto decrypt_type
+				goto decrypt_type_point;
 		}
 	}
 	else {
 		goto act_pick;
+	}
 	return 0;
 }
