@@ -38,8 +38,19 @@ int main()
 				}
 				break;
 			case 2:
+				printf("Введите длину массива: ");
+				scanf("%d", &l);
+				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
+				for(h = 0; h < l; h++) {
+					key_m[h] = rand_symb_gen(gen_type); //генрация ключа
+				}
+				h = 0;
 				while (current_symbol != EOF) {
-					crypted_symbol = viginer_in(current_symbol, crypt_key, language);
+					if(h < l) {
+						h = h - 8;
+					}
+					crypted_symbol = viginer_in(current_symbol, key_m[h]);
+					h++;
 					fprintf(out_text, "%c", crypted_symbol);
 					//смещение символа по изначальному файлу
 				}
@@ -70,8 +81,18 @@ int main()
 				}
 				break;
 			case 2:
-				while(current_symbol != EOF) {
-					current_symbol = viginer_out();
+				// длина ключа(измеряется в файле с ключом)
+				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
+				for(h = 0; h < l; h++) {
+					 ;//чтение ключа ключа
+				}
+				h = 0;
+				while (current_symbol != EOF) {
+					if(h < l) {
+						h = h - 8;
+					}
+					crypted_symbol = viginer_out(current_symbol, key_m[h]);
+					h++;
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}

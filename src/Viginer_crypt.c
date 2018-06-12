@@ -23,11 +23,16 @@ char viginer_in(char string, char f, short lang)
         }
         //исключение возможности выхода за пределы используемого алфавита
 
-        if ((new_ssq > 'Z' && new_ssq < 'a') || (new_ssq > 'z' && new_ssq < 'А') ||
+        while ((new_ssq > 'Z' && new_ssq < 'a') || (new_ssq > 'z' && new_ssq < 'А') ||
             (new_ssq > 'я')) {
-                if (lang == 1) {
+
+                if (string >= 'A' && string <='Z' && new_ssq > 'Z') {
                     new_ssq = new_ssq - 26;
-                } else {
+                } else if (string >= 'a' && string <= 'z' && new_sqq > 'z') {
+                    new_ssq = new_ssq - 26;
+                } else if (string >= 'а' && string <='я' && new_ssq  > 'я') {
+                    new_ssq = new_ssq - 32;
+                } else if (string >= 'А' && string <= 'Я' && new_ssq > 'Я') {
                     new_ssq = new_ssq - 32;
                 }
         }
