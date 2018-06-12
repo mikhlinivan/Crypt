@@ -6,8 +6,9 @@ setlocale(LC_ALL, "Rus");
 
 int main()
 {
-	FILE *out_text;
+	FILE *out_text, *decipher_text;
 	out_text = fopen("crypted.txt", "w");
+	decipher_text = fopen("decrypt.txt", "w");
 	int type, gen_type, step_for_caesar, act_type, i;
 	char current_symbol, crypted_symbol, key;
 	act_pick:
@@ -64,21 +65,21 @@ int main()
 				while(current_symbol != EOF) {
 					
 					current_symbol = vernam_decrypt(&current_symbol, key);
-					fprintf(out_text, "%c", current_symbol);//запись в файл
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
 			case 2:
 				while(current_symbol != EOF) {
 					current_symbol = viginer_out();
-					fprintf(out_text, "%c", current_symbol);//запись в файл
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
 			case 3:
 				while(current_symbol != EOF) {
 					current_symbol = //то на что кирилл заменит decipher
-					fprintf(out_text, "%c", current_symbol);//запись в файл
+					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
