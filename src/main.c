@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "vernam_crypt.h"
+#include "Viginer.h"
 #include "locale.h"
 setlocale(LC_ALL, "Rus");
 
@@ -61,22 +62,23 @@ int main()
 		switch (type) {
 			case 1:
 				while(current_symbol != EOF) {
+					
 					current_symbol = vernam_decrypt(&current_symbol, key);
-					//запись в файл
+					fprintf(out_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
 			case 2:
 				while(current_symbol != EOF) {
 					current_symbol = viginer_out();
-					//запись в файл
+					fprintf(out_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
 			case 3:
 				while(current_symbol != EOF) {
-					//то на что кирилл заменит decipher
-					//запись в файл
+					current_symbol = //то на что кирилл заменит decipher
+					fprintf(out_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
 				break;
