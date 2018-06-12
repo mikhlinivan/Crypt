@@ -96,22 +96,3 @@ void caesar_decrypt(int n)
     	close (fp1);
     	close (fp2);
 }
-
-int caesar()
-{
-    setlocale(LC_ALL,"Russian");
-    int n;
-    printf ("Введите натуральное n: ");
-    scanf ("%d", &n);
-    getchar (); //нужен для того, чтобы поймать символ клавиши ENTER, нажатой при вводе числа n
-    if (n < 1)
-        return 0;
-    printf ("Чтобы зашифровать текст введите a, расшифровать b: ");
-    char c;
-    scanf ("%c", &c, 1);
-    if (c == 'a') 
-        caesar_crypt(n);
-    if (c == 'b')
-        caesar_decrypt(n);
-   return 0;
-}
