@@ -79,5 +79,6 @@ int main()
 	}
 	else {
 		goto act_pick;
+	}
 	return 0;
 }
