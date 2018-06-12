@@ -3,7 +3,7 @@
 #include "locale.h"
 setlocale(LC_ALL, "Rus");
 
-char vernam (char *string, int lenght, int gen_type)
+char vernam (char *string, int gen_type)
 {
 	char crypt_string; //сивол куда будет идти шифрование на промежуточном этапе
 	int i; //счетчик для цикла
