@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <locale.h>
+#include "caesar.h"
 
 #define ENG 26
 #define RUS 32
 
-void encrypt (int n)
+void caesar_crypt(int n)
 {
 	FILE *fp1, *fp2;
 	open(&fp1, "input.txt", "r");
@@ -50,7 +51,7 @@ void encrypt (int n)
 	fclose (fp2);
 }
 
-void decipher (int n)
+void caesar_decrypt(int n)
 {
 	FILE *fp1, *fp2;
 	open(&fp1, "input.txt", "r");
@@ -96,18 +97,21 @@ void decipher (int n)
     	close (fp2);
 }
 
-int main ()
+int caesar()
 {
-    	setlocale(LC_ALL,"Russian");
-    	int n;
-    	printf ("Введите натуральное n: ");
-    	scanf ("%d", &n);
-    	getchar (); //нужен для того, чтобы поймать символ клавиши ENTER, нажатой при вводе числа n
-    	if (n < 1) return 0;
-    	printf ("Чтобы зашифровать текст введите a, расшифровать b: ");
-    	char c;
-    	scanf ("%c", &c, 1);
-    	if (c == 'a') encrypt (n);
-    	if (c == 'b') decipher (n);
-   	 return 0;
+    setlocale(LC_ALL,"Russian");
+    int n;
+    printf ("Введите натуральное n: ");
+    scanf ("%d", &n);
+    getchar (); //нужен для того, чтобы поймать символ клавиши ENTER, нажатой при вводе числа n
+    if (n < 1)
+        return 0;
+    printf ("Чтобы зашифровать текст введите a, расшифровать b: ");
+    char c;
+    scanf ("%c", &c, 1);
+    if (c == 'a') 
+        caesar_crypt(n);
+    if (c == 'b')
+        caesar_decrypt(n);
+   return 0;
 }
