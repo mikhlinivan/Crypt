@@ -7,7 +7,6 @@ setlocale(LC_ALL, "Rus");
 int main()
 {
 	FILE *out_text, *decipher_text, *key_i;
-	key_i = fopen("key.txt.", "a");
 	out_text = fopen("crypted.txt", "w");
 	decipher_text = fopen("decrypt.txt", "w");
 	int type, gen_type, step_for_caesar, act_type, i;
@@ -23,6 +22,7 @@ int main()
 		scanf("%d", &type);
 		switch (type) {
 			case 1:
+				key_i = fopen("key.txt.", "w");
 				gen_type_point:
 				printf("\n выберите тип генерации случайных символов для ключа из приведенных ниже \n");
 				printf("1. только английские символы \n 2. только русские символы \n 3. английские и русские символы \n");
@@ -39,6 +39,7 @@ int main()
 				else {
 					goto gen_type_point;
 				}
+				fclose(key_i);
 				break;
 			case 2:
 				while (current_symbol != EOF) {
@@ -65,12 +66,15 @@ int main()
 		scanf("%d", &type);
 		switch (type) {
 			case 1:
+				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
 					
-					current_symbol = vernam_decrypt(&current_symbol, key);
+					key 
+					current_symbol = vernam_decrypt(&current_symbol, &key);
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
+				fclose(key_i);
 				break;
 			case 2:
 				while(current_symbol != EOF) {
