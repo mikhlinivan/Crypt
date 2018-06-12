@@ -10,8 +10,7 @@ char vernam (char *string, int key)
 	crypt_string = *string
 	if((*string >= 'a' && *string <= 'z') || (*string >= 'A' && *string <= 'Z')
 	|| (*string >= 'а' && *string <= 'я')||(*string >= 'А' && *string <= 'Я')) {
-		crypt_string = *string ^ curr_key;
+		crypt_string = *string ^ key;
 	}
 	return crypt_string;
 }
-	
