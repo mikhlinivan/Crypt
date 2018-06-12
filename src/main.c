@@ -6,7 +6,8 @@ setlocale(LC_ALL, "Rus");
 
 int main()
 {
-	FILE *out_text, *decipher_text;
+	FILE *out_text, *decipher_text, *key_i;
+	key_i = fopen("key.txt.", "a");
 	out_text = fopen("crypted.txt", "w");
 	decipher_text = fopen("decrypt.txt", "w");
 	int type, gen_type, step_for_caesar, act_type, i;
@@ -28,7 +29,9 @@ int main()
 				scanf("%d", &gen_type);
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
-						crypted_symbol = vernam(&current_symbol, gen_type);
+						key = rand_symb_gen(gen_type);
+						crypted_symbol = vernam(&current_symbol, key);
+						fprintf (key_i,"%c", key);
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
 						//смещение символа по изначальному файлу
 					}
