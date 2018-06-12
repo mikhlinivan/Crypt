@@ -30,7 +30,7 @@ int main()
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
 						key = rand_symb_gen(gen_type);
-						crypted_symbol = vernam(&current_symbol, &key);
+						crypted_symbol = vernam(&current_symbol, key);
 						fprintf (key_i,"%c", key);//запись ключа в файл
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
 						//смещение символа(current_symbol) по файлу
@@ -42,6 +42,7 @@ int main()
 				fclose(key_i);
 				break;
 			case 2:
+				key_i = fopen("key.txt", "w");
 				printf("Введите длину массива: ");
 				scanf("%d", &l);
 				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
