@@ -6,7 +6,7 @@ setlocale(LC_ALL, "Rus");
 char vernam (char *string, int gen_type)
 {
 	FILE *key;
-	key = fopen("key.txt.", "a");
+	key = fopen("key.txt", "a");
 	curr_key = rand_symb_gen(gen_type);
 	char crypt_string, curr_key; //сивол куда будет идти шифрование на промежуточном этапе
 	int i; //счетчик для цикла
