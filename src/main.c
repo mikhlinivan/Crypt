@@ -22,7 +22,7 @@ int main()
 		scanf("%d", &type);
 		switch (type) {
 			case 1:
-				key_i = fopen("key.txt.", "w");
+				key_i = fopen("key.txt", "w");
 				gen_type_point:
 				printf("\n выберите тип генерации случайных символов для ключа из приведенных ниже \n");
 				printf("1. только английские символы \n 2. только русские символы \n 3. английские и русские символы \n");
@@ -30,10 +30,10 @@ int main()
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
 						key = rand_symb_gen(gen_type);
-						crypted_symbol = vernam(&current_symbol, key);
-						fprintf (key_i,"%c", key);
+						crypted_symbol = vernam(&current_symbol, &key);
+						fprintf (key_i,"%c", key);//запись ключа в файл
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
-						//смещение символа по изначальному файлу
+						//смещение символа(current_symbol) по файлу
 					}
 				}
 				else {
@@ -45,15 +45,20 @@ int main()
 				while (current_symbol != EOF) {
 					crypted_symbol = viginer_in(current_symbol, crypt_key, language);
 					fprintf(out_text, "%c", crypted_symbol);
-					//смещение символа по изначальному файлу
+					//смещение символа по файлу
 				}
 				break;
 			case 3:
+				key_i = fopen("key.txt", "w");
+				printf("введите шаг для шифра цезаря \n");
+				scanf("%d", &key);
+				fprintf(key_i, "%c", key);
 				while (current_symbol != EOF) {
 					crypted_symbol = //то на что кирилл заменит encrypt
 					fprintf(out_text, "%c", crypted_symbol);
-					//смещение символа по изначальному файлу
+					//смещение символа по файлу
 				}
+				fclose(key_i);
 				break;
 			case default:
 				goto crypt_type_point;
@@ -69,10 +74,11 @@ int main()
 				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
 					
-					key 
+					key = //символ который является текущим ключом
 					current_symbol = vernam_decrypt(&current_symbol, &key);
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
+					//смещение по файлу с ключом
 				}
 				fclose(key_i);
 				break;
@@ -81,14 +87,17 @@ int main()
 					current_symbol = viginer_out();
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
+					//смещение по файлу с ключом
 				}
 				break;
 			case 3:
+				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
 					current_symbol = //то на что кирилл заменит decipher
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
+				fclose(key_i);
 				break;
 			case default:
 				goto decrypt_type_point;
