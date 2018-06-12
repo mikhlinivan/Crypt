@@ -2,7 +2,7 @@
 #include "Viginer.h"
 #include "locale.h"
 
-char viginer_out(char string, char f, short lang)
+char viginer_out(char string, char f)
 {
     setlocale(LC_ALL, "Rus");
     char new_ssq; //переменная для дешифрования
@@ -24,13 +24,18 @@ char viginer_out(char string, char f, short lang)
 
         //исключение возможности выхода за пределы используемого алфавита
 
-        if ((new_ssq > 'Z' && new_ssq < 'a') || (new_ssq > 'z' && new_ssq < 'А') ||
-                (new_ssq < 'A')) {
-                    if(lang == 1) {
-                        new_ssq = new_ssq + 26;
-                    } else {
-                        new_ssq = new_ssq + 32;
-                    }
+        while ((new_ssq > 'Z' && new_ssq < 'a') || (new_ssq > 'z' && new_ssq < 'А') ||
+            (new_ssq < 'A')) {
+
+                if (string >= 'A' && string <='Z' && new_ssq < 'A') {
+                    new_ssq = new_ssq + 26;
+                } else if (string >= 'a' && string <= 'z' && new_sqq < 'a') {
+                    new_ssq = new_ssq + 26;
+                } else if (string >= 'а' && string <='я' && new_ssq  < 'а') {
+                    new_ssq = new_ssq + 32;
+                } else if (string >= 'А' && string <= 'Я' && new_ssq < 'А') {
+                    new_ssq = new_ssq + 32;
+                }
         }
         return new_ssq;
     }
