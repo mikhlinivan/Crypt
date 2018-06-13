@@ -92,7 +92,7 @@ CTEST (caesar, crypt)
 {
     char string;
     string = 'a';
-    char f = '5';
+    int f = 5;
     char result = caesar_in(string, f);
     char expected = 'f';
     ASSERT_EQUAL(expected, result);
@@ -101,7 +101,7 @@ CTEST (caesar, crypt)
 CTEST (caesar, fail_crypt)
 {
     char string = '.';
-    char f = '5';
+    int f = 5;
     char result = caesar_in(string, f);
     char expected = '.';
     ASSERT_EQUAL(expected, result);
@@ -112,7 +112,7 @@ CTEST (caesar, decrypt)
 {
     char string;
     string = 'f';
-    char f = '5';
+    int f = 5;
     char result = caesar_out(string, f);
     char expected = 'a';
     ASSERT_EQUAL(expected, result);
