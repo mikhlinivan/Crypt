@@ -34,6 +34,8 @@ int main()
 					while (current_symbol != EOF) {
 						key = rand_symb_gen(gen_type);
 						crypted_symbol = vernam(current_symbol, key);
+						if(crypted_symbol == current_symbol) {
+							key = '\0';
 						fprintf (key_i,"%c", key);//запись ключа в файл
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
 						current_symbol = fgetc(text);
