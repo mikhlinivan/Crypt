@@ -39,10 +39,10 @@ $(build)vernam_crypt.o: $(src)vernam_crypt.c $(src)vernam_crypt.h
 $(build)vernam_decrypt.o: $(src)vernam_decrypt.c $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_decrypt.c -o $@
 
-$(build)caesar.o: $(src)caesar_crypt.c $(src)caesar.h
+$(build)caesar_crypt.o: $(src)caesar_crypt.c $(src)caesar.h
 	$(CC) $(CFLAGS) -c $(src)caesar_crypt.c -o $@
 
-$(build)caesar.o: $(src)caesar_decrypt.c $(src)caesar.h
+$(build)caesar_decrypt.o: $(src)caesar_decrypt.c $(src)caesar.h
 	$(CC) $(CFLAGS) -c $(src)caesar_decrypt.c -o $@
 
 $(bin)main_test: $(OBJECTS_T)
@@ -63,7 +63,7 @@ $(build_t)random_symb.o: $(src)random_symb.c $(src)vernam_crypt.h
 $(build_t)vernam_crypt.o: $(src)vernam_crypt.c $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_crypt.c -o $@
 
-$(build_t)vernam_decrypt.o: $(src)vernam_decrypt.с $(src)vernam_crypt.h
+$(build_t)vernam_decrypt.o: $(src)vernam_decrypt.c $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_decrypt.c -o $@
 
 $(build_t)caesar_crypt.o: $(src)caesar_crypt.c $(src)caesar.h
