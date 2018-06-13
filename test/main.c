@@ -46,8 +46,8 @@ CTEST (viginer, fail_decrypt)
 //vernam in
 CTEST (vernam, crypt)
 {
-    char *string;
-    *string = 'F';
+    char string;
+    string = 'F';
     char f = 'b';
     char result = vernam(string, f);
     char expected = '$';
@@ -56,8 +56,9 @@ CTEST (vernam, crypt)
 
 CTEST (vernam, fail_crypt)
 {
-    char string = 'd';
-    char f = 'c';
+    char string;
+    string = 'F';
+    char f = 'b';
     char result = vernam(string, f);
     char expected = 's';
     ASSERT_EQUAL(expected, result);
@@ -67,8 +68,8 @@ CTEST (vernam, fail_crypt)
 
 CTEST (vernam, decrypt)
 {
-    char *string;
-    *string = '$';
+    char string;
+    string = '$';
     char f = 'b';
     char result = vernam_decrypt(string, f);
     char expected = 'F';
@@ -77,8 +78,9 @@ CTEST (vernam, decrypt)
 
 CTEST (vernam, fail_decrypt)
 {
-    char string = '$';
-    char f = 'c';
+    char string;
+    string = '$';
+    char f = 'b';
     char result = vernam_decrypt(string, f);
     char expected = 's';
     ASSERT_EQUAL(expected, result);
@@ -88,8 +90,8 @@ CTEST (vernam, fail_decrypt)
 
 CTEST (caesar, crypt)
 {
-    char *string;
-    *string = 'a';
+    char string;
+    string = 'a';
     char f = '5';
     char result = caesar_crypt(string, f);
     char expected = 'f';
@@ -108,8 +110,8 @@ CTEST (caesar, fail_crypt)
 
 CTEST (caesar, decrypt)
 {
-    char *string;
-    *string = 'f';
+    char string;
+    string = 'f';
     char f = '5';
     char result = caesar_decrypt(string, f);
     char expected = 'a';
