@@ -29,7 +29,7 @@ char viginer_out(char string, char f)
 
                 if (string >= 'A' && string <='Z' && new_ssq < 'A') {
                     new_ssq = new_ssq + 26;
-                } else if (string >= 'a' && string <= 'z' && new_sqq < 'a') {
+                } else if (string >= 'a' && string <= 'z' && new_ssq < 'a') {
                     new_ssq = new_ssq + 26;
                 } else if (string >= 'а' && string <='я' && new_ssq  < 'а') {
                     new_ssq = new_ssq + 32;

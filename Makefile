@@ -7,8 +7,8 @@ build=build/
 build_t=build_t/
 bin=bin/
 
-OBJECTS=$(addprefix $(build), main.o, caesar.o Viginer_crypt.o Viginer_uncrypt.o random_symb.o vernam_crypt.o,vernam_decrypt.o)
-OBJECTS_T=$(addprefix $(build_t), main_test.o Viginer_crypt.o Viginer_uncrypt.o vernam_crypt.o vernam_decrypt.o caesar.o)
+OBJECTS=$(addprefix $(build), main.o caesar_crypt.o caesar_decrypt.o Viginer_crypt.o Viginer_uncrypt.o random_symb.o vernam_crypt.o,vernam_decrypt.o)
+OBJECTS_T=$(addprefix $(build_t), main_test.o Viginer_crypt.o Viginer_uncrypt.o vernam_crypt.o vernam_decrypt.o caesar_crypt.o caesar_decrypt.o)
 EXE=bin/main
 
 .PHONY: all clean test
@@ -63,8 +63,11 @@ $(build_t)vernam_crypt.o: $(src)vernam_crypt.c $(src)vernam_crypt.h
 $(build_t)vernam_decrypt.o: $(src)vernam_decrypt.o $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_decrypt.c -o $@
 
-$(build_t)caesar.o: $(src)caesar.c $(src)caesar.h
-	$(CC) $(CFLAGS) -c $(src)caesar.c -o $@
+$(build_t)caesar_crypt.o: $(src)caesar_crypt.c $(src)caesar.h
+	$(CC) $(CFLAGS) -c $(src)caesar_crypt.c -o $@
+
+$(build_t)caesar_decrypt.o: $(src)caesar_decrypt.c $(src)caesar.h
+	$(CC) $(CFLAGS) -c $(src)caesar_decrypt.c -o $@
 
 build:
 	mkdir build
