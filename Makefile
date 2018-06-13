@@ -13,9 +13,9 @@ EXE=bin/main
 
 .PHONY: all clean test
 
-all: build build_t bin $(EXE)
+all: build bin $(EXE)
 
-test: $(bin)main_test
+test: $(bin)main_test build_t
 	$(bin)main_test
 
 $(EXE): $(OBJECTS)
