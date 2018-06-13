@@ -2,7 +2,7 @@
 #include "Viginer.h"
 #include "locale.h"
 
-char viginer_in(char string, char f, short lang)
+char viginer_in(char string, char f)
 {
     setlocale(LC_ALL, "russian_russia.1251");
     char new_ssq; //переменная для шифрования

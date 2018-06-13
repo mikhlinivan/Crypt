@@ -44,7 +44,7 @@ CTEST (viginer, fail_decrypt)
 }
 
 //vernam in
-CTEST (viginer, crypt)
+CTEST (vernam, crypt)
 {
     char *string;
     *string = 'F';
