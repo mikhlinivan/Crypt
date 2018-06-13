@@ -82,7 +82,7 @@ int main()
 				}
 				fclose(key_i);
 				break;
-			case default:
+			default:
 				goto crypt_type_point;
 		}
 	}
@@ -133,7 +133,7 @@ int main()
 				}
 				fclose(key_i);
 				break;
-			case default:
+			default:
 				goto decrypt_type_point;
 		}
 	}
