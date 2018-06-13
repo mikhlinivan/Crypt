@@ -66,7 +66,7 @@ int main()
 				scanf("%d", &key);
 				fprintf(key_i, "%c", key);
 				while (current_symbol != EOF) {
-					crypted_symbol = //то на что кирилл заменит encrypt
+					crypted_symbol = caesar_in(current_symbol, key); //то на что кирилл заменит encrypt
 					fprintf(out_text, "%c", crypted_symbol);
 					//смещение символа по файлу
 				}
@@ -114,7 +114,7 @@ int main()
 			case 3:
 				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
-					current_symbol = //то на что кирилл заменит decipher
+					current_symbol = caesar_out(current_symbol, key); //то на что кирилл заменит decipher
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 				}
