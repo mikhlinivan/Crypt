@@ -1,11 +1,12 @@
 #include "stdio.h"
 #include "vernam_crypt.h"
 #include "locale.h"
-setlocale(LC_ALL, "Rus");
+
 
 char vernam_decrypt(char string, char key) {
+	setlocale(LC_ALL, "Rus");
 	char decrypted;
-	if(string ^ key >= 'a' && string^ key <= 'z') || (string ^ key >= 'A' && string ^ key <= 'Z')
+	if((string ^ key >= 'a' && string^ key <= 'z') || (string ^ key >= 'A' && string ^ key <= 'Z')
 	|| (string ^ key >= 'а' && string ^ key <= 'я')||(string >= 'А' ^ key && string ^ key <= 'Я')) {
 		decrypted = string ^ key;
 	}
