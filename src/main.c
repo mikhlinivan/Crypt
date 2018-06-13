@@ -14,6 +14,7 @@ int main()
 	decipher_text = fopen("decrypt.txt", "w");
 	int type, gen_type, step_for_caesar, act_type, i, h, l;
 	char current_symbol, crypted_symbol, key;
+	char *key_m;
 	act_pick:
 	printf("выберите что будете делать с текстом из предложенных ниже вариантов \n");
 	printf("1.шифровать \n 2.дешифровать \n");
@@ -33,7 +34,7 @@ int main()
 				if(gen_type > 0 && gen_type < 4) {
 					current_symbol = fgets(text);
 					while (current_symbol != EOF) {
-						key = rand_symb_gen(gen_type);
+						key = randsymbgen(gen_type);
 						crypted_symbol = vernam(current_symbol, key);
 						if(crypted_symbol == current_symbol) {
 							key = '\0';
@@ -54,7 +55,7 @@ int main()
 				scanf("%d", &l);
 				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
 				for(h = 0; h < l; h++) {
-					key_m[h] = rand_symb_gen(gen_type); //генрация ключа
+					key_m[h] = randsymbgen(gen_type); //генрация ключа
 				}
 				h = 0;
 				current_symbol = fgets(text);
