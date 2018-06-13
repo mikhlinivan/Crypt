@@ -8,7 +8,7 @@ char caesar_out(char string, int key) {
 
     if ((string >= 'a' && string <= 'z') || (string >= 'A' && string <= 'Z') ||
         (string >= 'а' && string <= 'я') || (string >= 'А' && string <= 'Я')) {
-                New_ssq = string - key;
+                new_ssq = string - key;
 
                 if (string >= 'A' && string <='Z' && new_ssq > 'Z') {
                     new_ssq = new_ssq + 26;
