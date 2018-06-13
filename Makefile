@@ -15,7 +15,7 @@ EXE=bin/main
 
 all: build bin $(EXE)
 
-test: $(bin)main_test build_t
+test: build_t $(bin)main_test
 	$(bin)main_test
 
 $(EXE): $(OBJECTS)
@@ -36,7 +36,7 @@ $(build)random_symb.o: $(src)random_symb.c $(src)vernam_crypt.h
 $(build)vernam_crypt.o: $(src)vernam_crypt.c $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_crypt.c -o $@
 
-$(build)vernam_decrypt.o: $(src)vernam_decrypt.o $(src)vernam_crypt.h
+$(build)vernam_decrypt.o: $(src)vernam_decrypt.c $(src)vernam_crypt.h
 	$(CC) $(CFLAGS) -c $(src)vernam_decrypt.c -o $@
 
 $(build)caesar.o: $(src)caesar.c $(src)caesar.h
