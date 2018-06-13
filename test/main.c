@@ -79,10 +79,10 @@ CTEST (vernam, decrypt)
 CTEST (vernam, fail_decrypt)
 {
     char string;
-    string = '.';
+    string = ',';
     char f = 'b';
     char result = vernam_decrypt(string, f);
-    char expected = '.';
+    char expected = ',';
     ASSERT_EQUAL(expected, result);
 }
 
