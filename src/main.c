@@ -2,14 +2,15 @@
 #include "vernam_crypt.h"
 #include "Viginer.h"
 #include "locale.h"
-setlocale(LC_ALL, "Rus");
 
 int main()
 {
-	FILE *out_text, *decipher_text, *key_i;
+	setlocale(LC_ALL, "Rus");
+	FILE *out_text, *decipher_text, *key_i, *text;
+	text = fopen("users_text.txt", "r");
 	out_text = fopen("crypted.txt", "w");
 	decipher_text = fopen("decrypt.txt", "w");
-	int type, gen_type, step_for_caesar, act_type, i;
+	int type, gen_type, step_for_caesar, act_type, i, h, l;
 	char current_symbol, crypted_symbol, key;
 	act_pick:
 	printf("выберите что будете делать с текстом из предложенных ниже вариантов \n");
@@ -28,12 +29,13 @@ int main()
 				printf("1. только английские символы \n 2. только русские символы \n 3. английские и русские символы \n");
 				scanf("%d", &gen_type);
 				if(gen_type > 0 && gen_type < 4) {
+					current_symbol = fgets(text);
 					while (current_symbol != EOF) {
 						key = rand_symb_gen(gen_type);
 						crypted_symbol = vernam(current_symbol, key);
 						fprintf (key_i,"%c", key);//запись ключа в файл
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
-						//смещение символа(current_symbol) по файлу
+						current_symbol = fgetc(text);
 					}
 				}
 				else {
@@ -50,25 +52,27 @@ int main()
 					key_m[h] = rand_symb_gen(gen_type); //генрация ключа
 				}
 				h = 0;
+				current_symbol = fgets(text);
 				while (current_symbol != EOF) {
-					if(h < l) {
-						h = h - 8;
+					if(h > l) {
+						h = h - l;
 					}
 					crypted_symbol = viginer_in(current_symbol, key_m[h]);
 					h++;
 					fprintf(out_text, "%c", crypted_symbol);
-					//смещение символа по файлу
+					current_symbol = fgets(text);
 				}
 				break;
 			case 3:
 				key_i = fopen("key.txt", "w");
 				printf("введите шаг для шифра цезаря \n");
-				scanf("%d", &key);
-				fprintf(key_i, "%c", key);
+				scanf("%d", &step_for_caesar);
+				fprintf(key_i, "%d", step_for_caesar);
+				current_symbol = fgetc(text);
 				while (current_symbol != EOF) {
-					crypted_symbol = caesar_in(current_symbol, key); //то на что кирилл заменит encrypt
+					crypted_symbol = caesar_in(current_symbol, step_for_caesar); //то на что кирилл заменит encrypt
 					fprintf(out_text, "%c", crypted_symbol);
-					//смещение символа по файлу
+					current_symbol = fgetc(text);
 				}
 				fclose(key_i);
 				break;
@@ -84,39 +88,42 @@ int main()
 		switch (type) {
 			case 1:
 				key_i = fopen("key.txt.", "r");
+				key = fgets(key_i);
+				current_symbol = fgets(text);
 				while(current_symbol != EOF) {
-					key = fscanf("%c", )//символ который является текущим ключом
-					current_symbol = vernam_decrypt(current_symbol, key);
-					fprintf(decipher_text, "%c", current_symbol);//запись в файл
-					//смещение символа по файлу
-					//смещение по файлу с ключом
+					crypted_symbol = vernam_decrypt(current_symbol, key);
+					fprintf(decipher_text, "%c", crypted_symbol);//запись в файл
+					current_symbol = fgets(text);
+					key = fgets(key_i);
 				}
 				fclose(key_i);
 				break;
 			case 2:
-				// длина ключа(измеряется в файле с ключом)
+				key_i = fopen("key.txt.", "r");
 				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
 				for(h = 0; h < l; h++) {
-					 ;//чтение ключа ключа
+					key_m[h] = fgetc(key_i);//чтение ключа
 				}
 				h = 0;
+				current_symbol = fgets(text);
 				while (current_symbol != EOF) {
-					if(h < l) {
-						h = h - 8;
+					if(h > l) {
+						h = h - l;
 					}
 					crypted_symbol = viginer_out(current_symbol, key_m[h]);
 					h++;
-					fprintf(decipher_text, "%c", current_symbol);//запись в файл
-					//смещение символа по файлу
-					//смещение по файлу с ключом
+					fprintf(decipher_text, "%c", crypted_symbol);//запись в файл
+					current_symbol = fgets(text);
 				}
 				break;
 			case 3:
 				key_i = fopen("key.txt.", "r");
+				fscanf(key_i, "%d", &step_for_caesar);
+				current_symbol = fgets(text);
 				while(current_symbol != EOF) {
-					current_symbol = caesar_out(current_symbol, key); //то на что кирилл заменит decipher
-					fprintf(decipher_text, "%c", current_symbol);//запись в файл
-					//смещение символа по файлу
+					crypted_symbol = caesar_out(current_symbol, step_for_caesar); //то на что кирилл заменит decipher
+					fprintf(decipher_text, "%c", crypted_symbol);//запись в файл
+					current_symbol = fgets(text);//смещение символа по файлу
 				}
 				fclose(key_i);
 				break;
@@ -127,5 +134,8 @@ int main()
 	else {
 		goto act_pick;
 	}
+	fclose(text);
+	fclose(out_text);
+	fclose(decipher_text);
 	return 0;
 }
