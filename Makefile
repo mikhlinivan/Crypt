@@ -15,7 +15,7 @@ EXE=bin/main
 
 all: build bin $(EXE)
 
-test: build_t $(bin)main_test
+test: bin build_t $(bin)main_test
 	$(bin)main_test
 
 $(EXE): $(OBJECTS)
