@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include "caesar.h"
 #include <locale.h>
-setlocale(LC_ALL, "Rus");
 
 char caesar_out(char string, int key) {
+    setlocale(LC_ALL, "Rus");
     char new_ssq;
 
     if ((string >= 'a' && string <= 'z') || (string >= 'A' && string <= 'Z') ||
@@ -22,7 +22,6 @@ char caesar_out(char string, int key) {
                 else if (string >= 'А' && string <= 'Я' && new_ssq > 'Я') {
                     new_ssq = new_ssq + 32;
                     }
-            }
             return new_ssq;
     }
 
