@@ -3,11 +3,11 @@
 #include <locale.h>
 setlocale(LC_ALL, "Rus");
 
-char caesar_in(char *string, int key) {
+char caesar_in(char string, int key) {
     char new_ssq;
 
-    if ((*string >= 'a' && *string <= 'z') || (*string >= 'A' && *string <= 'Z') ||
-	(*string >= 'а' && *string <= 'я') || (*string >= 'А' && *string <= 'Я')) {
+    if ((string >= 'a' && string <= 'z') || (string >= 'A' && string <= 'Z') ||
+	(string >= 'а' && string <= 'я') || (string >= 'А' && string <= 'Я')) {
 		New_ssq = string + key;
 	    }
                 if (string >= 'A' && string <='Z' && new_ssq > 'Z') {
