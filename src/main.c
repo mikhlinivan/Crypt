@@ -1,7 +1,8 @@
 #include "stdio.h"
 #include "vernam_crypt.h"
 #include "Viginer.h"
-#include "locale.h"
+#include "caesar.h"
+#include <locale.h>
 
 int main()
 {
