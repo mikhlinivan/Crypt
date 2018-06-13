@@ -1,4 +1,5 @@
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
 #include "vernam_crypt.h"
 #include "Viginer.h"
 #include "caesar.h"
