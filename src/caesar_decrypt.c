@@ -5,7 +5,6 @@ setlocale(LC_ALL, "Rus");
 
 char caesar_out(char *string, int key) {
     char new_ssq;
-    int key;
 
     if ((*string >= 'a' && *string <= 'z') || (*string >= 'A' && *string <= 'Z') ||
         (*string >= 'а' && *string <= 'я') || (*string >= 'А' && *string <= 'Я')) {
