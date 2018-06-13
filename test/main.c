@@ -58,7 +58,7 @@ CTEST (vernam, fail_crypt)
 {
     char string;
     string = ' ';
-    char f = 'b';
+    char f = '\0';
     char result = vernam(string, f);
     char expected = ' ';
     ASSERT_EQUAL(expected, result);
@@ -80,7 +80,7 @@ CTEST (vernam, fail_decrypt)
 {
     char string;
     string = ' ';
-    char f = 'F';
+    char f = '\0';
     char result = vernam_decrypt(string, f);
     char expected = ' ';
     ASSERT_EQUAL(expected, result);
