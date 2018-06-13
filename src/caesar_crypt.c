@@ -24,6 +24,5 @@ char caesar_in(char string, int key) {
                     }
             return new_ssq;
     }
-
     return string;
 }
