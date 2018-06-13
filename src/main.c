@@ -30,7 +30,7 @@ int main()
 				if(gen_type > 0 && gen_type < 4) {
 					while (current_symbol != EOF) {
 						key = rand_symb_gen(gen_type);
-						crypted_symbol = vernam(&current_symbol, key);
+						crypted_symbol = vernam(current_symbol, key);
 						fprintf (key_i,"%c", key);//запись ключа в файл
 						fprintf(out_text, "%c", crypted_symbol);//запись в файл
 						//смещение символа(current_symbol) по файлу
@@ -86,7 +86,7 @@ int main()
 				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
 					key = fscanf("%c", )//символ который является текущим ключом
-					current_symbol = vernam_decrypt(&current_symbol, key);
+					current_symbol = vernam_decrypt(current_symbol, key);
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 					//смещение по файлу с ключом
