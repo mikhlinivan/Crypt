@@ -85,9 +85,8 @@ int main()
 			case 1:
 				key_i = fopen("key.txt.", "r");
 				while(current_symbol != EOF) {
-					
-					key = //символ который является текущим ключом
-					current_symbol = vernam_decrypt(&current_symbol, &key);
+					key = fscanf("%c", )//символ который является текущим ключом
+					current_symbol = vernam_decrypt(&current_symbol, key);
 					fprintf(decipher_text, "%c", current_symbol);//запись в файл
 					//смещение символа по файлу
 					//смещение по файлу с ключом
