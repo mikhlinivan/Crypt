@@ -9,7 +9,7 @@ char randsymbgen (int gen_type)
 	srand ( time(NULL) );
 	int a,b;
 	char symb;
-	b = rand % (2);
+	b = rand() % 2;
 	if(b == 0) {
 		if(gen_type == 1) {
 			a = rand() % (27);
@@ -25,7 +25,7 @@ char randsymbgen (int gen_type)
 				symb = 'a' + a;
 			}
 			else {
-				a = rand % (32);
+				a = rand() % (32);
 				symb = 'а' + a;
 			}
 		}
@@ -45,7 +45,7 @@ char randsymbgen (int gen_type)
 				symb = 'A' + a;
 			}
 			else {
-				a = rand % (32);
+				a = rand() % (32);
 				symb = 'А' + a;
 			}
 		}
