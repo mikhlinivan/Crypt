@@ -1,10 +1,11 @@
 #include "stdio.h"
+#include "stdlib.h"
 #include "vernam_crypt.h"
 #include "locale.h"
-setlocale(LC_ALL, "Rus");
 
 char randsymbgen (int gen_type) 
 {
+	setlocale(LC_ALL, "Rus");
 	srand ( time(NULL) );
 	int a,b;
 	char symb;
