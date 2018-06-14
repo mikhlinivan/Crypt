@@ -37,7 +37,6 @@ int main()
 					fprintf (key_i,"%c", key);//запись ключа в файл
 					fprintf(out_text, "%c", crypted_symbol);//запись в файл
 					current_symbol = fgetc(text);
-					}
 				}
 				else {
 					goto gen_type_point;
