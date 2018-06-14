@@ -27,21 +27,16 @@ int main()
 		switch (type) {
 			case 1:
 				key_i = fopen("key.txt", "w");
-				gen_type_point:
-				printf("\n выберите тип генерации случайных символов для ключа из приведенных ниже \n");
-				printf("1. только английские символы \n 2. только русские символы \n 3. английские и русские символы \n");
-				scanf("%d", &gen_type);
-				if(gen_type > 0 && gen_type < 4) {
+				current_symbol = fgetc(text);
+				while (current_symbol != EOF) {
+					key = randsymbgen(1);
+					crypted_symbol = vernam(current_symbol, key);
+					if(crypted_symbol == current_symbol) {
+						key = '\0';
+					}
+					fprintf (key_i,"%c", key);//запись ключа в файл
+					fprintf(out_text, "%c", crypted_symbol);//запись в файл
 					current_symbol = fgetc(text);
-					while (current_symbol != EOF) {
-						key = randsymbgen(gen_type);
-						crypted_symbol = vernam(current_symbol, key);
-						if(crypted_symbol == current_symbol) {
-							key = '\0';
-						}
-						fprintf (key_i,"%c", key);//запись ключа в файл
-						fprintf(out_text, "%c", crypted_symbol);//запись в файл
-						current_symbol = fgetc(text);
 					}
 				}
 				else {
@@ -55,7 +50,7 @@ int main()
 				scanf("%d", &l);
 				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
 				for(h = 0; h < l; h++) {
-					key_m[h] = randsymbgen(gen_type);//генрация ключа
+					key_m[h] = randsymbgen(1);//генрация ключа
 					fprintf(key_i, "%c", key_m[h]);
 				}
 				h = 0;
