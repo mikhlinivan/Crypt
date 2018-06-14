@@ -38,9 +38,6 @@ int main()
 					fprintf(out_text, "%c", crypted_symbol);//запись в файл
 					current_symbol = fgetc(text);
 				}
-				else {
-					goto gen_type_point;
-				}
 				fclose(key_i);
 				break;
 			case 2:
