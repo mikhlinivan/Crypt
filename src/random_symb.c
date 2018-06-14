@@ -12,41 +12,51 @@ char randsymbgen (int gen_type)
 	b = rand() % 2;
 	if(b == 0) {
 		if(gen_type == 1) {
+			srand ( time(NULL) );
 			a = rand() % (27);
-			symb = 'a' + a;
+			symb = 'a' + a - 1;
 		}
 		if(gen_type == 2) {
+			srand ( time(NULL) );
 			a = rand() % (32);
-			symb = 'а' + a;
+			symb = 'а' + a - 1;
 		}
 		if(gen_type == 3) {
+			srand ( time(NULL) );
 			if((rand() % (2)) == 1) {
+				srand ( time(NULL) );
 				a = rand() % (27);
-				symb = 'a' + a;
+				symb = 'a' + a - 1;
 			}
 			else {
+				srand ( time(NULL) );
 				a = rand() % (32);
-				symb = 'а' + a;
+				symb = 'а' + a - 1;
 			}
 		}
 	}
 	else {
 		if(gen_type == 1) {
+			srand ( time(NULL) );
 			a = rand() % (27);
-			symb = 'A' + a;
+			symb = 'A' + a - 1;
 		}
 		if(gen_type == 2) {
+			srand ( time(NULL) );
 			a = rand() % (32);
-			symb = 'А' + a;
+			symb = 'А' + a - 1;
 		}
 		if(gen_type == 3) {
+			srand ( time(NULL) );
 			if((rand() % (2)) == 1) {
+				srand ( time(NULL) );
 				a = rand() % (27);
-				symb = 'A' + a;
+				symb = 'A' + a - 1;
 			}
 			else {
+				srand ( time(NULL) );
 				a = rand() % (32);
-				symb = 'А' + a;
+				symb = 'А' + a - 1;
 			}
 		}
 	}
