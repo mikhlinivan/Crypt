@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/mikhlinivan/Crypt.svg?branch=master)](https://travis-ci.org/mikhlinivan/Crypt)
+https://travis-ci.org/mikhlinivan/Crypt.svg?branch=release_branch
