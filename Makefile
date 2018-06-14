@@ -7,7 +7,7 @@ build=build/
 build_t=build_t/
 bin=bin/
 
-OBJECTS=$(addprefix $(build), main.o caesar_crypt.o caesar_decrypt.o Viginer_crypt.o Viginer_uncrypt.o random_symb.o vernam_crypt.o,vernam_decrypt.o)
+OBJECTS=$(addprefix $(build), main.o caesar_crypt.o caesar_decrypt.o Viginer_crypt.o Viginer_uncrypt.o random_symb.o vernam_crypt.o vernam_decrypt.o)
 OBJECTS_T=$(addprefix $(build_t), main_test.o Viginer_crypt.o Viginer_uncrypt.o vernam_crypt.o vernam_decrypt.o caesar_crypt.o caesar_decrypt.o)
 EXE=bin/main
 
@@ -24,7 +24,7 @@ $(EXE): $(OBJECTS)
 $(build)main.o: $(src)main.c
 	$(CC) $(CFLAGS) -c $(src)main.c -o $@
 
-$(build)Viginer_crypt.o: $(src)Viginer_crypt.o $(src)Viginer.h
+$(build)Viginer_crypt.o: $(src)Viginer_crypt.c $(src)Viginer.h
 	$(CC) $(CFLAGS) -c $(src)Viginer_crypt.c -o $@
 
 $(build)Viginer_uncrypt.o: $(src)Viginer_uncrypt.c $(src)Viginer.h

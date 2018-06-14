@@ -69,6 +69,7 @@ int main()
 					fprintf(out_text, "%c", crypted_symbol);
 					current_symbol = fgetc(text);
 				}
+				free(key_m);
 				break;
 			case 3:
 				key_i = fopen("key.txt", "w");
@@ -122,6 +123,7 @@ int main()
 					fprintf(decipher_text, "%c", crypted_symbol);//запись в файл
 					current_symbol = fgetc(text);
 				}
+				free(key_m);
 				break;
 			case 3:
 				key_i = fopen("key.txt.", "r");
