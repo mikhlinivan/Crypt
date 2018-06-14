@@ -13,50 +13,50 @@ char randsymbgen (int gen_type)
 	if(b == 0) {
 		if(gen_type == 1) {
 			srand ( time(NULL) );
-			a = rand() % (27);
-			symb = 'a' + a - 1;
+			a = rand() % (26);
+			symb = 'a' + a;
 		}
 		if(gen_type == 2) {
 			srand ( time(NULL) );
-			a = rand() % (32);
-			symb = 'а' + a - 1;
+			a = rand() % (31);
+			symb = 'а' + a;
 		}
 		if(gen_type == 3) {
 			srand ( time(NULL) );
 			if((rand() % (2)) == 1) {
 				srand ( time(NULL) );
-				a = rand() % (27);
-				symb = 'a' + a - 1;
+				a = rand() % (26);
+				symb = 'a' + a;
 			}
 			else {
 				srand ( time(NULL) );
-				a = rand() % (32);
-				symb = 'а' + a - 1;
+				a = rand() % (31);
+				symb = 'а' + a;
 			}
 		}
 	}
 	else {
 		if(gen_type == 1) {
 			srand ( time(NULL) );
-			a = rand() % (27);
-			symb = 'A' + a - 1;
+			a = rand() % (26);
+			symb = 'A' + a;
 		}
 		if(gen_type == 2) {
 			srand ( time(NULL) );
-			a = rand() % (32);
-			symb = 'А' + a - 1;
+			a = rand() % (31);
+			symb = 'А' + a;
 		}
 		if(gen_type == 3) {
 			srand ( time(NULL) );
 			if((rand() % (2)) == 1) {
 				srand ( time(NULL) );
-				a = rand() % (27);
-				symb = 'A' + a - 1;
+				a = rand() % (26);
+				symb = 'A' + a;
 			}
 			else {
 				srand ( time(NULL) );
-				a = rand() % (32);
-				symb = 'А' + a - 1;
+				a = rand() % (31);
+				symb = 'А' + a;
 			}
 		}
 	}
