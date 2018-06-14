@@ -55,7 +55,8 @@ int main()
 				scanf("%d", &l);
 				key_m = (char*)malloc((l + 1) * sizeof(char)); //создание массива под ключ
 				for(h = 0; h < l; h++) {
-					key_m[h] = randsymbgen(gen_type); //генрация ключа
+					key_m[h] = randsymbgen(gen_type);//генрация ключа
+					fprintf(key_i, "%c", key_m[h];
 				}
 				h = 0;
 				current_symbol = fgetc(text);
