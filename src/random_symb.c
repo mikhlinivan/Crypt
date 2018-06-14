@@ -3,7 +3,7 @@
 #include "locale.h"
 setlocale(LC_ALL, "Rus");
 
-char rand_symb_gen (int gen_type) 
+char randsymbgen (int gen_type) 
 {
 	srand ( time(NULL) );
 	int a,b;
